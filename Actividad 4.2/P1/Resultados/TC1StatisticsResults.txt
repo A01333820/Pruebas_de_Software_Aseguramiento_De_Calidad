@@ -1,0 +1,7 @@
+Count: 400
+Mean: 242.32
+Median: 239.5
+Mode: 393.0
+Population Variance: 21099.917599999997
+Population Std Dev: 145.25810683056557
+Execution Time: 0.008857 seconds
