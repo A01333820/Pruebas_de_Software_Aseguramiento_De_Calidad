@@ -60,6 +60,7 @@ def process_sales(product_dict, sales_filename):
         print(f"Error: Sales file not found -> {sales_filename}")
         sys.exit(1)
 
+
 def main():
     """Main function to execute the sales computation"""
     if len(sys.argv) != 3:
