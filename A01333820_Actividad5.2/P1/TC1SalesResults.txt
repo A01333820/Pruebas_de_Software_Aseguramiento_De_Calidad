@@ -1,0 +1,2 @@
+Total Sales: 2481.8600000000006
+Execution Time: 0.000000 seconds
