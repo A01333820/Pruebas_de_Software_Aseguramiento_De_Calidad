@@ -1,8 +1,10 @@
+"""Storage Module"""
 import json
 import os
 
 
 def load_data(filename):
+    """Load JSON file safely."""
     if not os.path.exists(filename):
         return []
 
@@ -15,5 +17,6 @@ def load_data(filename):
 
 
 def save_data(filename, data):
+    """Save JSON file safely."""
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)

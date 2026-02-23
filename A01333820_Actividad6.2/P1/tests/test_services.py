@@ -1,23 +1,28 @@
+"""Unit tests for hotel services."""
 import unittest
-from models.hotel import Hotel
+import os
+from services.hotel_service import create_hotel
+from storage import load_data
+
+TEST_FILE = "data/hotels.json"
 
 
-class TestHotelModel(unittest.TestCase):
+class TestServices(unittest.TestCase):
 
-    def test_reserve(self):
-        hotel = Hotel(1, "Test", 2)
-        self.assertTrue(hotel.reserve_room())
+    def setUp(self):
+        """Set up test environment."""
+        with open(TEST_FILE, "w", encoding="utf-8") as file:
+            file.write("[]")
 
-    def test_no_rooms(self):
-        hotel = Hotel(1, "Test", 0)
-        self.assertFalse(hotel.reserve_room())
+    def test_create_hotel(self):
+        """Test creating a hotel."""
+        create_hotel(1, "Hotel Test", 5)
+        data = load_data(TEST_FILE)
+        self.assertEqual(len(data), 1)
 
-    def test_cancel(self):
-        hotel = Hotel(1, "Test", 1)
-        hotel.reserve_room()
-        hotel.cancel_reservation()
-        self.assertEqual(hotel.available_rooms, 1)
-
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_duplicate_hotel(self):
+        """Test creating a hotel with duplicate ID."""
+        create_hotel(1, "Hotel Test", 5)
+        create_hotel(1, "Hotel Test", 5)
+        data = load_data(TEST_FILE)
+        self.assertEqual(len(data), 1)

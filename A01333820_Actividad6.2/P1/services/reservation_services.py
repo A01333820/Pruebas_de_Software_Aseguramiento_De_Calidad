@@ -1,3 +1,4 @@
+"""Reservation Service Module"""
 from storage import load_data, save_data
 from models.reservation import Reservation
 
@@ -7,12 +8,14 @@ RESERVATIONS_FILE = "data/reservations.json"
 
 
 def create_reservation(res_id, customer_id, hotel_id):
+    """Create a new reservation."""
     hotels = load_data(HOTELS_FILE)
     customers = load_data(CUSTOMERS_FILE)
     reservations = load_data(RESERVATIONS_FILE)
 
     hotel = next((h for h in hotels if h["hotel_id"] == hotel_id), None)
-    customer = next((c for c in customers if c["customer_id"] == customer_id), None)
+    customer = next(
+        (c for c in customers if c["customer_id"] == customer_id), None)
 
     if hotel is None:
         print("Hotel not found")
@@ -35,6 +38,7 @@ def create_reservation(res_id, customer_id, hotel_id):
 
 
 def cancel_reservation(res_id):
+    """Cancel an existing reservation."""
     reservations = load_data(RESERVATIONS_FILE)
     hotels = load_data(HOTELS_FILE)
 

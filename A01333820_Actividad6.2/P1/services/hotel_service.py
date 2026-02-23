@@ -1,3 +1,4 @@
+"""Hotel Service Module"""
 from storage import load_data, save_data
 from models.hotel import Hotel
 
@@ -5,6 +6,7 @@ HOTELS_FILE = "data/hotels.json"
 
 
 def create_hotel(hotel_id, name, rooms):
+    """Create a new hotel."""
     hotels = load_data(HOTELS_FILE)
 
     if any(h["hotel_id"] == hotel_id for h in hotels):
@@ -17,6 +19,7 @@ def create_hotel(hotel_id, name, rooms):
 
 
 def modify_hotel(hotel_id, new_name=None, new_rooms=None):
+    """Modify an existing hotel's details."""
     hotels = load_data(HOTELS_FILE)
 
     for h in hotels:
@@ -32,6 +35,7 @@ def modify_hotel(hotel_id, new_name=None, new_rooms=None):
 
 
 def display_hotel(hotel_id):
+    """"Display hotel details."""
     hotels = load_data(HOTELS_FILE)
 
     for h in hotels:
@@ -43,6 +47,7 @@ def display_hotel(hotel_id):
 
 
 def delete_hotel(hotel_id):
+    """Delete a hotel."""
     hotels = load_data(HOTELS_FILE)
     updated = [h for h in hotels if h["hotel_id"] != hotel_id]
     save_data(HOTELS_FILE, updated)
