@@ -32,3 +32,6 @@ class TestHotel(unittest.TestCase):
         hotel.reserve_room()
         hotel.cancel_reservation()
         self.assertEqual(hotel.available_rooms, 1)
+
+if __name__ == "__main__":
+    unittest.main()

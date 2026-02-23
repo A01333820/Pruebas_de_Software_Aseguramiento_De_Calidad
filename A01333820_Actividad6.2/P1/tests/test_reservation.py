@@ -15,3 +15,6 @@ class TestReservation(unittest.TestCase):
         """Test conversion of Reservation to dictionary."""
         reservation = Reservation(1, 10, 20)
         self.assertEqual(reservation.to_dict()["hotel_id"], 20)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -26,3 +26,6 @@ class TestServices(unittest.TestCase):
         create_hotel(1, "Hotel Test", 5)
         data = load_data(TEST_FILE)
         self.assertEqual(len(data), 1)
+
+if __name__ == "__main__":
+    unittest.main()

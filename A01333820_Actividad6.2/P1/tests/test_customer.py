@@ -15,3 +15,6 @@ class TestCustomer(unittest.TestCase):
         """Test conversion of Customer to dictionary."""
         customer = Customer(1, "John")
         self.assertEqual(customer.to_dict()["customer_id"], 1)
+
+if __name__ == "__main__":
+    unittest.main()
